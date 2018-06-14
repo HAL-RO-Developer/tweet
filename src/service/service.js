@@ -1,4 +1,4 @@
-import axios from 'axios'
+gitimport axios from 'axios'
 
 const api = axios.create({
     baseURL: 'https://caseteambserver-tlbxdwyvvc.now.sh/api', // バックエンドB のURL:port を指定する
