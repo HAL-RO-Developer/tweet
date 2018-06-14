@@ -1,12 +1,14 @@
 <template>
-  <ul>
+  <ul class="tweets">
     <li v-for="(tweet, key, index) in tweets" :key="index">
-      <img src="https://pbs.twimg.com/profile_images/778387920440823808/kw35Gu4T_400x400.jpg" 
-      alt="ユーザ画像">
-      <p>{{tweet.name}}</p>
-      <p>{{tweet.id}}</p>
-      <p>{{tweet.body}}</p>
-      <p>{{tweet.favorite}}</p>
+      <div class="image"><img src="https://pbs.twimg.com/profile_images/778387920440823808/kw35Gu4T_400x400.jpg" 
+      alt="ユーザ画像"></div>
+      <div class="tweet">
+      <p class="name">{{tweet.name}}</p>
+      <p class="id">{{tweet.id}}</p>
+      <p class="body">{{tweet.body}}</p>
+      <p class="favo">{{tweet.favorite}}</p>
+      </div>
     </li>
   </ul>
 </template>
@@ -32,9 +34,30 @@ export default {
 </script>
 
 <style>
+.tweets {
+  background: #FFF;
+  padding: 10px;
+  overflow: hidden;
+}
 .image {
-  width: 5%;
-  height: 5%;
+  width: 10%;
+  height: 10%;
+  float: left;
+  margin-right: 10px;
+  padding-bottom: 10px;
+  clear : both;
+}
+.tweet {
+  overflow: hidden;
+}
+.name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.id, .body, .favo{
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 </style>
 
