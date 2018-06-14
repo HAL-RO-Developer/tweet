@@ -14,16 +14,9 @@
                             required>
                     </b-input>
                 </b-field>
-
-                <b-field label="Password">
-                    <b-input
-                            type="password"
-                            v-model="password"
-                            password-reveal
-                            placeholder="Your password"
-                            required>
-                    </b-input>
-                </b-field>
+                
+                
+                
                 <!-- <b-checkbox>Remember me</b-checkbox> -->
             </section>
             <footer class="modal-card-foot">
@@ -42,7 +35,6 @@
         data() {
             return {
                 name: "",
-                password: "",
                 msg:""
             }
         },
@@ -60,14 +52,8 @@
                 });
             },
             signin(){
-                http.signin(this.name, this.password)
-                .then( (response)=> {
-                    console.log(response.data.token);   
-                    auth.SetToken(response.data.token);                
-                })
-                .catch( (error)=> {
-                    console.log(error);
-                });
+                localStorage.setItem('name', this.name)
+                location.href = '/tweet/' + this.name
             }
         }
     }
