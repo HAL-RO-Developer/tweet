@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import List from './components/pages/list.vue'
 import Timeline from './components/pages/timeline.vue'
 import Tweet from './components/pages/tweet.vue'
 import Index from './components/pages/index.vue'
