@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import List from './components/pages/list.vue'
 import Timeline from './components/pages/timeline.vue'
+import Tweet from './components/pages/tweet.vue'
 import Index from './components/pages/index.vue'
 import Login from './components/pages/login.vue'
 import NotFound from './components/pages/notFound.vue'
@@ -16,6 +17,7 @@ Vue.use(VueRouter)
 
 const routes = [
     { path: "/timeline", component: Timeline },
+    { path: "/tweet/:name", component: Tweet },
     { path: "/", component: Index },
     { path: "/login" , component: Login },
     { path: "*", component: NotFound },
