@@ -14,6 +14,8 @@
                             required>
                     </b-input>
                 </b-field>
+                <input type="file" v-on:change="onFileChange"><br>
+                <img class="contain" v-show="image" :src="image" /><br>
                 <!-- <b-checkbox>Remember me</b-checkbox> -->
             </section>
             <footer class="modal-card-foot">
@@ -27,11 +29,13 @@
 <script>
     import axios from 'axios'
     import http from '../../service/service'
+    import session from '../../service/session'
     import auth from '../../service/auth'
     export default {
         data() {
             return {
                 name: "",
+                image:"",
                 msg:""
             }
         },
@@ -49,9 +53,33 @@
                 });
             },
             signin(){
-                localStorage.setItem('name', this.name)
-                this.$router.push({ path: '/tweet/' + localStorage.getItem('name') })
-            }
+               session.signin(this, this.name, this.image)
+            },
+            onFileChange(e){
+            let files = e.target.files || e.dataTransfer.files;
+            http.imageUpload(files[0])
+                .then((response) => {
+                    console.log(response.data.image_url)
+                    this.image = response.data.image_url
+                }) 
+                .catch( (error)=> {
+                    //console.log(error.response.data.err)    
+                });                
+            },
         }
     }
 </script>
+
+<style>
+    .contain {
+        display: inline-block;
+        background-color: #ccc;
+        background-position: center center;
+        background-repeat: no-repeat;
+        margin: 5px;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ccc;
+        background-size: contain;
+    }
+</style>

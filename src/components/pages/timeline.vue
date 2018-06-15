@@ -1,7 +1,7 @@
 <template>
   <ul class="tweets">
     <li v-for="(tweet, key, index) in tweets" :key="index">
-      <div class="image"><img :src='image_src' v-show="image_src"></div>
+      <div class="image"><img :src='tweet.image'></div>
       <div class="tweet">
       <p class="name">{{tweet.name}}</p>
       <p class="body">{{tweet.body}}</p>
@@ -17,7 +17,7 @@ export default {
   data(){
     return{
       tweets :new Array(),
-      image_src: "https://api.patra.store/v1/images"
+      image_src: ""
     }
   },
   created(){

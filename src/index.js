@@ -17,7 +17,7 @@ Vue.use(VueRouter)
 
 const routes = [
     { path: "/user/:name", component: User },
-    { path: "/timeline/", component: Timeline },
+    { path: "/timeline", component: Timeline },
     { path: "/tweet/:name", component: Tweet },
     { path: "/", component: Index },
     { path: "/login" , component: Login },
