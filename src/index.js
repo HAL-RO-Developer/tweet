@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import User from './components/pages/user.vue'
 import Timeline from './components/pages/timeline.vue'
 import Tweet from './components/pages/tweet.vue'
 import Index from './components/pages/index.vue'
@@ -15,7 +16,8 @@ Vue.use(Buefy)
 Vue.use(VueRouter)
 
 const routes = [
-    { path: "/timeline", component: Timeline },
+    { path: "/user/:name", component: User },
+    { path: "/timeline/", component: Timeline },
     { path: "/tweet/:name", component: Tweet },
     { path: "/", component: Index },
     { path: "/login" , component: Login },
