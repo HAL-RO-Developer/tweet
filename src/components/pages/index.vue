@@ -49,9 +49,9 @@
         },
         created:function(){
           if (localStorage.getItem('name') == null) {
-            location.href = '/login';
+            this.$router.push({ path: '/login' })
           } else {
-            location.href = '/tweet/' + localStorage.getItem('name')
+            this.$router.push({ path: '/tweet/' + localStorage.getItem('name') })
           }
         },
         methods:{

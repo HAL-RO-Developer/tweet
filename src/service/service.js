@@ -33,6 +33,19 @@ class Http{
     tweets(){
         return api.get('/tweets')
     }
+    imageUpload(file){
+        var formData = new FormData()
+        formData.append('file',file)
+        return axios.post('https://staging-api.patra.store/v1/images',
+            formData,
+            {
+                headers: {
+                    'ContentType': 'multipart/form-data',
+                },
+                responseType: 'json'
+            })
+    }
 }
+
 var http = new Http()
 export default http;

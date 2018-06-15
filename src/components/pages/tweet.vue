@@ -7,6 +7,7 @@
         <button class="button" type="button" @click="tweet">TWEET</button><br>
         <button class="button" type="button" @click="signout">ログアウト</button><br>
         <p class="err" v-if="msg">[ERR]{{msg}}</p>
+        <p v-if="image">{{image}}</p>
     </div>
 </template>
 <script>
@@ -37,18 +38,19 @@
             },
             onFileChange(e){
                 let files = e.target.files || e.dataTransfer.files;
-                this.createImage(files[0]);
-            },
-            createImage(file){
-                let reader = new FileReader();
-                reader.onload = (e) => {
-                    this.image = e.target.result;
-                };
-                reader.readAsDataURL(file);
+                //console.log(files[0])
+                http.imageUpload(files[0])
+                    .then((response) => {
+                        console.log(response.data.image_url)
+                        this.image = respose.data.image_url
+                    }) 
+                    .catch( (error)=> {
+                        //console.log(error.response.data.err)    
+                    });                
             },
             signout(){
                 localStorage.removeItem('name')
-                location.href = '/'
+                this.$router.push({ path: '/' });
             }
         }
     }

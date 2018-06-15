@@ -50,7 +50,7 @@
             },
             signin(){
                 localStorage.setItem('name', this.name)
-                location.href = '/tweet/' + this.name
+                this.$router.push({ path: '/tweet/' + localStorage.getItem('name') })
             }
         }
     }
